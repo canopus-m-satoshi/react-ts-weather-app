@@ -8,7 +8,7 @@ import Title from './components/Title';
 type ResultsStateType = {
   country: string;
   cityName: string;
-  temprature: string;
+  temperature: string;
   conditionText: string;
   icon: string;
 };
@@ -18,7 +18,7 @@ function App() {
   const [results, setResults] = useState<ResultsStateType>({
     country: '',
     cityName: '',
-    temprature: '',
+    temperature: '',
     conditionText: '',
     icon: '',
   });
@@ -33,7 +33,7 @@ function App() {
         setResults({
           country: data.location.country,
           cityName: data.location.name,
-          temprature: data.current.temp_c,
+          temperature: data.current.temp_c,
           conditionText: data.current.condition.text,
           icon: data.current.condition.icon,
         });
@@ -41,10 +41,12 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <Title />
-      <Form setCity={setCity} getWeather={getWeather} />
-      <Results results={results} />
+    <div className="wrapper">
+      <div className="container">
+        <Title />
+        <Form setCity={setCity} getWeather={getWeather} />
+        <Results results={results} />
+      </div>
     </div>
   );
 }

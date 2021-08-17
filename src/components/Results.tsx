@@ -4,33 +4,30 @@ type ResultsPropsType = {
   results: {
     country: string;
     cityName: string;
-    temprature: string;
+    temperature: string;
     conditionText: string;
     icon: string;
   };
 };
 
-const Results = (props: ResultsPropsType) => {
+const Results = ({ results }: ResultsPropsType) => {
+  const { cityName, country, temperature, conditionText, icon } = results;
   return (
-    <div>
-      {props.results.cityName && <div>{props.results.cityName}</div>}
-      {props.results.country && <div>{props.results.country}</div>}
-      {props.results.temprature && (
-        <div>
-          {props.results.temprature}
-          <span>°C</span>
+    <>
+      {cityName && <div className="results-city">{cityName}</div>}
+      {country && <div className="results-country">{country}</div>}
+      {temperature && (
+        <div className="results-temp">
+          {temperature} <span>°C</span>
         </div>
       )}
-      {props.results.conditionText && (
-        <div>
-          <img src={props.results.icon} alt="icon" />
-          <span>{props.results.conditionText}</span>
+      {conditionText && (
+        <div className="results-condition">
+          <img src={icon} alt="icon" />
+          <span>{conditionText}</span>
         </div>
       )}
-      {/* <h2>
-        Weather Data {props.results.country} {2 < 4 && <p>正しいですか？</p>}
-      </h2> */}
-    </div>
+    </>
   );
 };
 
