@@ -18,7 +18,7 @@ const Results = (props: ResultsPropsType) => {
       {props.results.temprature && (
         <div>
           {props.results.temprature}
-          <span>C</span>
+          <span>°C</span>
         </div>
       )}
       {props.results.conditionText && (
